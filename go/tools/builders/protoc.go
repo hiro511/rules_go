@@ -67,6 +67,8 @@ func run(args []string) error {
 		fmt.Sprintf("--%v_out=%v:%v", pluginName, strings.Join(options, ","), *outPath),
 		"--plugin", fmt.Sprintf("%v=%v", strings.TrimSuffix(pluginBase, ".exe"), *plugin),
 		"--descriptor_set_in", strings.Join(descriptors, string(os.PathListSeparator)),
+		"--include_imports", "--include_source_info",
+		"--descriptor_set_out=descriptor.pb",
 	}
 	protoc_args = append(protoc_args, flags.Args()...)
 	cmd := exec.Command(*protoc, protoc_args...)
